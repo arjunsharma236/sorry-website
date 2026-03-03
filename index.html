@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>For Aaru ❤️</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #ff4e50, #ff7eb3);
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        .card {
+            background: rgba(0, 0, 0, 0.65);
+            width: 420px;
+            padding: 30px;
+            border-radius: 20px;
+            margin: 100px auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+
+        h1 {
+            font-size: 28px;
+        }
+
+        .glow {
+            font-size: 32px;
+            color: #fff;
+            animation: glow 1.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #fff, 0 0 20px #ff4e50, 0 0 30px #ff4e50;
+            }
+            to {
+                text-shadow: 0 0 20px #fff, 0 0 30px #ff1e3c, 0 0 40px #ff1e3c;
+            }
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px 25px;
+            font-size: 16px;
+            border: none;
+            border-radius: 25px;
+            background: #ff1e3c;
+            color: white;
+            cursor: pointer;
+        }
+
+        #letter {
+            display: none;
+            margin-top: 20px;
+            animation: fadeIn 2s;
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+
+        .heart {
+            position: absolute;
+            color: rgba(255,255,255,0.8);
+            animation: float 6s linear infinite;
+        }
+
+        @keyframes float {
+            from { transform: translateY(100vh); }
+            to { transform: translateY(-10vh); }
+        }
+
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<canvas id="fireworks"></canvas>
+
+<div class="card">
+    <h1>I'm Sorry ❤️</h1>
+    <h2 class="glow">Aaru 💖</h2>
+
+    <p>
+        Aaru, I know you're upset…  
+        and it hurts me seeing you sad.  
+        You are my happiness, my peace, my everything.
+    </p>
+
+    <button onclick="openHeart()">Open My Heart 💌</button>
+
+    <div id="letter">
+        <p>
+            Aaru ❤️  
+            No matter what happens, I will always choose you.  
+            I am truly sorry for hurting you.  
+            You are the most beautiful part of my life.  
+            Please forgive me… I love you forever and ever. 💕  
+            — Yours, Always.
+        </p>
+    </div>
+</div>
+
+<audio id="music" loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
+</audio>
+
+<script>
+function openHeart() {
+    document.getElementById("letter").style.display = "block";
+    document.getElementById("music").play();
+    startFireworks();
+}
+
+// Floating hearts
+setInterval(function() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 20 + "px";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+}, 500);
+
+// Fireworks effect
+const canvas = document.getElementById("fireworks");
+const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+function startFireworks() {
+    setInterval(() => {
+        ctx.fillStyle = "rgba(0,0,0,0.1)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.beginPath();
+        ctx.arc(Math.random()*canvas.width, Math.random()*canvas.height, 5, 0, Math.PI*2);
+        ctx.fillStyle = "white";
+        ctx.fill();
+    }, 100);
+}
+</script>
+
+</body>
+</html>
